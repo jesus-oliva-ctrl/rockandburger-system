@@ -1,0 +1,14 @@
+# Archivos compilados por Java
+*.class
+
+# Archivos construidos por Maven
+target/
+
+# Configuraciones locales de Visual Studio Code
+.vscode/
+.settings/
+.classpath
+.project
+
+# Archivos de logs
+*.log
