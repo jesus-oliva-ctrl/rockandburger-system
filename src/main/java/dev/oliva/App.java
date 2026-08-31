@@ -1,26 +1,23 @@
 package dev.oliva;
 
-import dev.oliva.dao.UserDAO;
-import dev.oliva.model.User;
+import dev.oliva.dao.ProductDAO;
+import dev.oliva.model.Product;
 import dev.oliva.util.HibernateUtil;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Starting Rock & Burger System...");
+        System.out.println("Starting Rock & Burger Database Engine...");
 
         try {
-            UserDAO userDAO = new UserDAO();
-
-            System.out.println("Creating Admin user object...");
-            User adminUser = new User("admin_cruz", "password123", "ADMIN");
-
-            System.out.println("Attempting to insert user into the database...");
-            userDAO.saveUser(adminUser);
-
-            System.out.println("Database insertion test finished successfully!");
+            ProductDAO productDAO = new ProductDAO();
+            
+            System.out.println("Creating first product...");
+            Product burger = new Product("Classic Burger", 5.99, "Burgers", 50);
+            
+            System.out.println("Attempting to insert product into the database...");
+            productDAO.saveProduct(burger);
 
         } catch (Exception e) {
-            System.err.println("An error occurred during execution: " + e.getMessage());
             e.printStackTrace();
         } finally {
             HibernateUtil.shutdown();

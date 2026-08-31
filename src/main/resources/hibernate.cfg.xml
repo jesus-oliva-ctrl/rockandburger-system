@@ -16,6 +16,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="dev.oliva.model.User"/>
+        <mapping class="dev.oliva.model.Product"/>
         
         </session-factory>
 </hibernate-configuration>
