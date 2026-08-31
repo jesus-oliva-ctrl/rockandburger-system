@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,15 +22,15 @@ public class Usuario {
     private String password;
 
     @Column(nullable = false, length = 20)
-    private String rol;
+    private String role;
 
-    public Usuario() {
+    public User() {
     }
 
-    public Usuario(String username, String password, String rol) {
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
-        this.rol = rol;
+        this.role = role;
     }
 
     public Integer getId() {
@@ -57,11 +57,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getRol() {
-        return rol;
+    public String getRole() {
+        return role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
