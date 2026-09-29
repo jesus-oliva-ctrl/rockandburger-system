@@ -1,5 +1,6 @@
 package dev.oliva.dao;
 
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import dev.oliva.util.HibernateUtil;
@@ -20,6 +21,16 @@ public class ProductDAO {
             }
             System.err.println("Error saving product: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    public List<Product> getAllProducts() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Product", Product.class).list();
+        } catch (Exception e) {
+            System.err.println("Error retrieving products: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
 }
