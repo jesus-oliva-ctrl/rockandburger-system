@@ -28,4 +28,17 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
+
+    public User authenticate (String username, String password) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("FROM User WHERE username = :user AND password = :pass", User.class)
+                          .setParameter("user", username)
+                          .setParameter("pass", password)
+                          .uniqueResult();
+        } catch (Exception e) {
+            System.err.println("Authentication error: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
